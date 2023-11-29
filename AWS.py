@@ -12,13 +12,7 @@ with open('rootkey.csv', 'r') as file:
     if len(keys) == 2:
         aws_acc_key, aws_scr_key = keys
 
-aws_region = 'ap-northeast-2'
+aws_region = 'ap-northeast-2' # 구역 선택
 ec2 = boto3.client('ec2', aws_access_key_id=aws_acc_key, aws_secret_access_key=aws_scr_key, region_name=aws_region)
 
-# EC2 인스턴스 목록 가져오기
-response = ec2.describe_instances()
 
-for reservation in response['Reservations']:
-    for instance in reservation['Instances']:
-        print(f"Instance ID: {instance['InstanceId']}")
-        print(f"Instance State: {instance['State']['Name']}")
