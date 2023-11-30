@@ -32,7 +32,12 @@ def availableRegions():
 
 def startInstance():
     id = input("Enter the Instance ID: ")
-    ec2.start_instances(InstanceIds = [id])
+    ec2.start_instances(InstanceIds=[id])
     print(f"Starting {id}")
+
+def stopInstance():
+    id = input("Enter the Instance ID: ")
+    ec2.stop_instances(InstanceIds=[id])
+    print(f"Stopping {id}")
 
 
