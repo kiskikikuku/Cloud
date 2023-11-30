@@ -19,3 +19,9 @@ def instancesList():
     response = ec2.describe_instances()
     instances = [instance['InstanceId'] for reservation in response['Reservations'] for instance in reservation['Instances']]
     print("Instanace lists:", instances)
+
+def availableZones():
+    response = ec2.describe_availability_zones()
+    zones = [zone['ZoneName'] for zone in response['AvailabilityZones']]
+    print("Available zones: ")
+
