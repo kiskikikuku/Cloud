@@ -23,7 +23,12 @@ def instancesList():
 def availableZones():
     response = ec2.describe_availability_zones()
     zones = [zone['ZoneName'] for zone in response['AvailabilityZones']]
-    print("Available zones: ")
+    print("Available zones: ", zones)
+
+def availableRegions():
+    response = ec2.describe_regions()
+    regions = [region['RegionName'] for region in response['Regions']]
+    print("Available regions: ", regions)
 
 def startInstance():
     id = input("Enter the Instance ID: ")
