@@ -59,3 +59,8 @@ def createInstance():
     # 생성된 인스턴스 ID 출력
     instance_id = response['Instances'][0]['InstanceId']
     print(f"Instance {instance_id} created successfully.")
+
+def rebootInstance():
+    id = input("Enter the Instance ID: ")
+    ec2.reboot_instances(InstanceIds=[id])
+    print(f"Rebooting {id}")
