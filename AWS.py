@@ -48,15 +48,12 @@ def createInstance():
     max_count = 1
 
     # 인스턴스 생성
-    response = ec2.run_instances(
+    response = ec2.create_instances(
         ImageId=ami_id,
         InstanceType=instance_type,
         MinCount=min_count,
         MaxCount=max_count,
-        KeyName='your_key_pair_name',  # 키페어 이름 설정
-        SecurityGroupIds=['your_security_group_id'],  # 보안 그룹 ID 설정
-        SubnetId='your_subnet_id'  # 서브넷 ID 설정
-        # 기타 필요한 매개변수 추가
+        KeyName='cloud-test2'
     )
 
     # 생성된 인스턴스 ID 출력
