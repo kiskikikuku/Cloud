@@ -70,3 +70,39 @@ def listImages():
     images = [image['ImageId'] for image in response['Images']]
     print('Available images: ', images)
 
+def main():
+    while True:
+        print("------------------------------------------------------------")
+        print("1. list instance 2. available zones")
+        print("3. start instance 4. available regions")
+        print("5. stop instance 6. create instance")
+        print("7. reboot instance 8. list images")
+        print("99. quit")
+        print("------------------------------------------------------------")
+
+        choice = input("Enter your choice: ")
+
+        if choice == '1':
+            instancesList()
+        elif choice == '2':
+            availableZones()
+        elif choice == '3':
+            startInstance()
+        elif choice == '4':
+            availableRegions()
+        elif choice == '5':
+            stopInstance()
+        elif choice == '6':
+            createInstance()
+        elif choice == '7':
+            rebootInstance()
+        elif choice == '8':
+            listImages()
+        elif choice == '99':
+            print("Quiting...")
+            exit()
+        else:
+            print("Invalid choice. Please try again.")
+
+if __name__ == "__main__":
+    main()
