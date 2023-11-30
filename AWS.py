@@ -64,3 +64,9 @@ def rebootInstance():
     id = input("Enter the Instance ID: ")
     ec2.reboot_instances(InstanceIds=[id])
     print(f"Rebooting {id}")
+
+def listImages():
+    response = ec2.describe_images(Owners=['self'])
+    images = [image['ImageId'] for image in response['Images']]
+    print('Available images: ', images)
+
