@@ -15,4 +15,7 @@ with open('rootkey.csv', 'r') as file:
 aws_region = 'ap-northeast-2' # 구역 선택
 ec2 = boto3.client('ec2', aws_access_key_id=aws_acc_key, aws_secret_access_key=aws_scr_key, region_name=aws_region)
 
-
+def instancesList():
+    response = ec2.describe_instances()
+    instances = [instance['InstanceId'] for reservation in response['Reservations'] for instance in reservation['Instances']]
+    print("Instanace lists:", instances)
