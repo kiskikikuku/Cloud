@@ -40,4 +40,25 @@ def stopInstance():
     ec2.stop_instances(InstanceIds=[id])
     print(f"Stopping {id}")
 
+def createInstance():
+    # 필요한 매개변수 설정
+    ami_id = 'ami-0c55b159cbfafe1f0'  # Amazon Linux 2 AMI ID (예시)
+    instance_type = 't2.micro'
+    min_count = 1
+    max_count = 1
 
+    # 인스턴스 생성
+    response = ec2.run_instances(
+        ImageId=ami_id,
+        InstanceType=instance_type,
+        MinCount=min_count,
+        MaxCount=max_count,
+        KeyName='your_key_pair_name',  # 키페어 이름 설정
+        SecurityGroupIds=['your_security_group_id'],  # 보안 그룹 ID 설정
+        SubnetId='your_subnet_id'  # 서브넷 ID 설정
+        # 기타 필요한 매개변수 추가
+    )
+
+    # 생성된 인스턴스 ID 출력
+    instance_id = response['Instances'][0]['InstanceId']
+    print(f"Instance {instance_id} created successfully.")
