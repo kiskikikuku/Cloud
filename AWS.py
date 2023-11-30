@@ -25,3 +25,9 @@ def availableZones():
     zones = [zone['ZoneName'] for zone in response['AvailabilityZones']]
     print("Available zones: ")
 
+def startInstance():
+    id = input("Enter the Instance ID: ")
+    ec2.start_instances(InstanceIds = [id])
+    print(f"Starting {id}")
+
+
